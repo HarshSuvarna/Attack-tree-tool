@@ -8,10 +8,7 @@ import ParametersText from "./ParametersText";
 export default function IntermediateNode({
   data: { gate, description },
   id,
-}: NodeProps<{
-  gate: string;
-  description: string;
-}>) {
+}: NodeProps<any>) {
   const { setNodes } = useReactFlow();
   const dispatch = useDispatch();
 

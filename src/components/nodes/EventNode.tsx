@@ -8,15 +8,7 @@ import ParametersText from "./ParametersText";
 export default function EventNode({
   data: { description, probability, skill, frequency, cost, isPossible },
   id,
-}: NodeProps<{
-  gate: string;
-  description: string;
-  probability: number;
-  skill: number;
-  frequency: number;
-  cost: number;
-  isPossible: boolean;
-}>) {
+}: NodeProps<any>) {
   const { setNodes } = useReactFlow();
   const dispatch = useDispatch();
   const hangelCheckBoxChange = (e: any) => {

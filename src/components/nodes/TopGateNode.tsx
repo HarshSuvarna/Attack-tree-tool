@@ -6,7 +6,7 @@ import GateDropdown from "./GateDropdown";
 export default function TopGateNode({
   data: { gate, description },
   id,
-}: NodeProps<{ gate: string; description: string }>) {
+}: NodeProps<any>) {
   // const upateGate
   return (
     <div className="container">

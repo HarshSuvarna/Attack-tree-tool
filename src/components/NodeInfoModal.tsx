@@ -7,7 +7,7 @@ import { getDownloadUrl, getSignedUrl } from "../service/storage.service";
 
 function NodeInfoModal() {
   const [file, setFile] = useState();
-  const [fileType, setFileType] = useState<string>("");
+  // const [fileType, setFileType] = useState<string>("");
   const [fileName, setFileName] = useState<string>("");
   const [nodeId, setNodeId] = useState("");
   const [documents, setDocuments] = useState<any>([]);
@@ -19,7 +19,7 @@ function NodeInfoModal() {
     let file = event.target.files[0];
     setFile(file);
     setFileName(file?.name);
-    setFileType(file?.type);
+    // setFileType(file?.type);
   };
   useEffect(() => {
     if (nodeId && treeDetails) {

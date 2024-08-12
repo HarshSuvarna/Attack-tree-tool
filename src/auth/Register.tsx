@@ -73,7 +73,7 @@ const RegistrationForm: React.FC = () => {
     } else {
       try {
         dispatch(toggleLoading(true));
-        const res = await registerUser(formData);
+        const res: any = await registerUser(formData);
         const userData = res.userData;
         dispatch(setUser(userData));
         dispatch(toggleLoading(false));
@@ -85,18 +85,6 @@ const RegistrationForm: React.FC = () => {
       // Handle form submission (e.g., send data to API)
     }
   };
-
-  const hashPassword = async (password: string) => {
-    try {
-      return bcrypt.hash(password, 10);
-
-      // Compare the hashed password with the plain text password
-      //   const isMatch = await bcrypt.compare(plainTextPassword, hashedPassword);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <div>
