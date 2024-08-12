@@ -1,5 +1,3 @@
-import { current } from "@reduxjs/toolkit";
-
 export const deleteSelectedEdge = (state: any, edgeId: string) => {
   const edgeIndex = (state.currentTreeData.edges || []).findIndex(
     (e: any) => e.id === edgeId

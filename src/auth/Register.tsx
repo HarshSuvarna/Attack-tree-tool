@@ -1,13 +1,12 @@
 // RegistrationForm.tsx
 import React, { useEffect, useState } from "react";
-import "../styles/registration.css";
-import bcrypt from "bcryptjs";
-import { registerUser } from "../service/auth.service";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../slice/userSlice";
-import { toggleLoading } from "../slice/loaderSlice";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../common/store";
+import { registerUser } from "../service/auth.service";
+import { toggleLoading } from "../slice/loaderSlice";
+import { setUser } from "../slice/userSlice";
+import "../styles/registration.css";
 interface FormData {
   firstName: string;
   lastName: string;

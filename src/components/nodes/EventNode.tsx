@@ -11,7 +11,7 @@ export default function EventNode({
 }: NodeProps<any>) {
   const { setNodes } = useReactFlow();
   const dispatch = useDispatch();
-  const hangelCheckBoxChange = (e: any) => {
+  const hangelCheckBoxChange = () => {
     setNodes((nodes: any) =>
       nodes.map((node: any) =>
         node.id === id

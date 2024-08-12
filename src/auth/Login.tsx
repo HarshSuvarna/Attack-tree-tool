@@ -37,7 +37,7 @@ export default function Login() {
     try {
       const params: loginInterface = { email, password };
       dispatch(toggleLoading(true));
-      const res = await login(params);
+      const res: any = await login(params);
       const userData = res.userData;
       dispatch(setUser(userData));
       dispatch(toggleLoading(false));
