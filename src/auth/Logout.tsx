@@ -9,6 +9,7 @@ export default function Logout() {
   const handleButtonClick = () => {
     dispatch(clearUser());
     dispatch(toggleLoading(false));
+    localStorage.removeItem("token");
     navigate("/login");
   };
   return (

@@ -5,12 +5,13 @@ import history from "./History";
 
 export default function axiosInterceptors(axios: AxiosInstance) {
   axios.defaults.baseURL =
-    import.meta.env.VITE_API_BASE_URL_PROD || "http://localhost:8000";
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
   axios.interceptors.request.use((request) => {
     // let token = cookies?.cookies?;
-    // request.headers["authorization"] = token ? "Bearer " + token : "";
-    request.withCredentials = true; // send token with cookies
+    const token = localStorage.getItem("token");
+    request.headers["authorization"] = token ? "Bearer " + token : "";
+    // request.withCredentials = true; // send token with cookies
     return request;
   });
 

@@ -39,6 +39,7 @@ export default function Login() {
       dispatch(toggleLoading(true));
       const res: any = await login(params);
       const userData = res.userData;
+      localStorage.setItem("token", res.token);
       dispatch(setUser(userData));
       dispatch(toggleLoading(false));
       navigate("/home");
