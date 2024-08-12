@@ -1,0 +1,85 @@
+.sidebar {
+  /* height: 74vh; */
+  flex-direction: column;
+  justify-content: start;
+  gap: 4rem;
+  box-sizing: border-box;
+  padding: 40px 15px;
+  background: #e8e8e8;
+  border-radius: 20px;
+  width: 30%;
+}
+
+.dndnode {
+  padding: 7px 71px;
+  box-sizing: border-box;
+  min-width: 86%;
+  text-align: center;
+  color: white;
+  /* border: 1px solid black; */
+}
+
+.purple {
+  background-color: purple;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
+
+.node-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .dndflow {
+    flex-direction: row;
+  }
+
+  .dndflow aside {
+    width: 20%;
+    max-width: 250px;
+  }
+}
+
+.user-search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: red;
+  height: 85%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-bar {
+  width: 60%;
+  background: white;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+  border: none;
+  font-size: 19px;
+}
+
+.search-result-container {
+  width: 55%;
+  background-color: white;
+}
+
+.search-result-container p {
+  font-size: 12px;
+}

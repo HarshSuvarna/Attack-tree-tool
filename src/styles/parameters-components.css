@@ -1,0 +1,39 @@
+textarea {
+  background-color: transparent;
+  border: none;
+  word-wrap: break-word;
+  color: white;
+  min-height: 50px;
+  max-height: 100px;
+  overflow: hidden;
+  width: 100px;
+  resize: none;
+}
+textarea::placeholder {
+  color: rgb(185, 185, 185);
+}
+textarea:focus {
+  outline: none;
+}
+
+input {
+  width: 29px;
+  height: 10px;
+  /* border-bottom: 1px solid black; */
+  border-width: 0 0 1px 0;
+  border-bottom: 1px solid gray;
+  font-size: 8px;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+

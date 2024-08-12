@@ -1,0 +1,58 @@
+.container {
+  border: 1px solid black;
+}
+
+.parameters {
+  font-size: 14px;
+  background-color: rgb(255, 255, 255);
+  font: bold;
+  color: rgb(0, 0, 0);
+  min-height: 35px;
+  gap: 30px;
+  width: 100%;
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 5px 5px;
+  box-sizing: border-box;
+}
+
+.text-container {
+  min-width: 100px;
+  max-width: 105px;
+  text-align: left;
+  color: white;
+  background: purple;
+  min-height: 40px;
+  padding: 0px 10px;
+  font-size: 10px;
+  word-wrap: break-word;
+}
+
+.gate-container {
+  min-height: 25px;
+  display: flex;
+}
+
+.parameters > p {
+  font-size: 5px;
+  text-align: center;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 10px;
+  /* width: 40%; */
+}
+
+span {
+  font-size: 7px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.floating {
+  position: fixed;
+  top: 0;
+}

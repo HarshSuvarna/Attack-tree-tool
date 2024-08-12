@@ -1,0 +1,24 @@
+.modal-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+.modal-box {
+    max-width: 40%;
+    min-width: 30rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 19%;
+    height: 55%;
+    z-index: 20;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255);
+}

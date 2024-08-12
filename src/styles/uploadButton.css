@@ -1,0 +1,12 @@
+.upload-container {
+  width: 100%;
+  background: red;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-container input {
+  width: 25%;
+}
