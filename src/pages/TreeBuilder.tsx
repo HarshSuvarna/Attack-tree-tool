@@ -75,9 +75,9 @@ export default function TreeBuilder() {
     setShowPath(!showPath);
   };
 
-  const toggleShowPossiblePath = async () => {
+  async function toggleShowPossiblePath() {
     setShowPossiblePath(!showPossiblePath);
-  };
+  }
   useEffect(() => {
     treeNodesRef.current = treeNodes;
   }, [treeNodes]);
@@ -102,7 +102,7 @@ export default function TreeBuilder() {
         );
         // console.log("treeDetails :>> ", treeDetailsRef.current);
         // console.log("originalTreeDetails :>> ", originalTreeDetailsRef.current);
-        console.log("differences :>> ", differences);
+        // console.log("differences :>> ", differences);
         if (differences && differences.length) {
           setOriginalTreeDetails(treeDetailsRef.current);
           dispatch(setCurrentTree(treeDetailsRef.current));
@@ -118,7 +118,7 @@ export default function TreeBuilder() {
                 diff.path.length > 1
                   ? diff.path.slice(1).join(".")
                   : diff.path[0];
-              
+
               // console.log("newTreeNode :>> ", newTreeNode);
               set(newTreeNode, path, cloneDeep(diff.rhs));
               setTreeNodes(newTreeNode);
@@ -133,7 +133,7 @@ export default function TreeBuilder() {
     // }
     return () => {
       clearInterval(observeInterval);
-      console.log("Interval cleared");
+      // console.log("Interval cleared");
     };
   }, []);
 
@@ -153,6 +153,7 @@ export default function TreeBuilder() {
             showPossiblePath={showPossiblePath}
             showPath={showPath}
             setParameter={setParameter}
+            parameter={parameter}
             treeId={tree._id}
             createTreeFromTemplate={createTreeFromTemplate}
             isTemplate={isTemplate}

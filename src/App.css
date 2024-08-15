@@ -15,10 +15,11 @@
 }
 
 .diagram-box {
-  background-color: #ff000000;
+  background-color: #6d6d6d87;
   height: 88vh;
-  width: 60%;
-  border: 1px solid black;
+  width: 67%;
+  border: 1px solid #787878;
+  border-radius: 12px;
 }
 
 .design-view {
@@ -26,9 +27,10 @@
   display: flex;
   height: 90vh;
   box-sizing: border-box;
-  padding: 0 40px;
+  padding: 0px 15px;
   gap: 30px;
-  justify-content: center;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 
 .react-flow__pane {

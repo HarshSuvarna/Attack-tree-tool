@@ -1,12 +1,13 @@
 .container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 12px;
 }
 
 .parameters {
   font-size: 14px;
   background-color: rgb(255, 255, 255);
   font: bold;
-  color: rgb(0, 0, 0);
+  color: #e1e1e1;
   min-height: 35px;
   gap: 30px;
   width: 100%;
@@ -17,33 +18,110 @@
   grid-gap: 10px;
   padding: 5px 5px;
   box-sizing: border-box;
+  background-color: #292929;
+  border-radius: 0px 0px 12px 12px;
 }
 
 .text-container {
-  min-width: 100px;
+  min-width: 122px;
   max-width: 105px;
   text-align: left;
   color: white;
-  background: purple;
+  background: red;
   min-height: 40px;
   padding: 0px 10px;
   font-size: 10px;
   word-wrap: break-word;
+  border-radius: 12px 12px 0 0;
+}
+
+.delete-node-btn {
+  color: #e1e1e1;
+  /* background-color: transparent; */
+  height: 10px;
+  width: 6px;
+  font-size: 9px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.expand-node-btn {
+  color: #e1e1e1;
+  /* background-color: transparent; */
+  /* height: 10px; */
+  /* width: 6px; */
+  font-size: 9px;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+}
+
+.expand-node-btn:hover {
+  background-color: rgb(142, 255, 23);
+  color: #292929;
+}
+.delete-node-btn:hover {
+  background-color: red;
 }
 
 .gate-container {
+  border-radius: 0px 0px 12px 12px;
   min-height: 25px;
   display: flex;
+  background: #292929;
+}
+
+.gate-container select {
+  background-color: rgb(0 89 220 / 0%);
+  color: #e1e1e1;
+  border: 0;
+  margin-left: 16px;
+  box-shadow: 0;
+}
+
+.gate-select:active {
+  outline: none;
+}
+.gate-select:focus {
+  outline: none;
+}
+
+.gate-select option {
+  background-color: #292929;
+  color: #e1e1e1;
 }
 
 .parameters > p {
-  font-size: 5px;
+  font-size: 13px;
   text-align: center;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  font-weight: 700;
   /* width: 40%; */
+}
+
+.param-input {
+  background: transparent;
+  /* padding: 8px; */
+  border: none;
+  /* border-radius: 4px; */
+  color: #e1e1e1;
+  font-size: 14px;
+  text-align: center;
+  /* background: red; */
+  height: 1px;
+  border-bottom: solid 1px #e1e1e1;
+  border-radius: 0;
 }
 
 span {

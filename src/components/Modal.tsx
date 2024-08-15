@@ -15,7 +15,7 @@ export const Modal = ({ shouldShow, onRequestClose, children }: Props) => {
           e.stopPropagation();
         }}
       >
-        <button className="" onClick={onRequestClose}>
+        <button className="close-btn" onClick={onRequestClose}>
           X
         </button>
         {children}

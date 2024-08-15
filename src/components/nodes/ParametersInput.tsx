@@ -24,7 +24,9 @@ export default function ParametersInput({ parameter, id, type }: Props) {
   };
 
   return (
+    
     <input
+      className="param-input"
       type="number"
       value={parameter}
       onChange={(e) => updateParameter(e.target.value)}

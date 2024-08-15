@@ -2,15 +2,16 @@ textarea {
   background-color: transparent;
   border: none;
   word-wrap: break-word;
-  color: white;
+  color: #292929;
   min-height: 50px;
   max-height: 100px;
   overflow: hidden;
   width: 100px;
   resize: none;
+  font-weight: 600;
 }
 textarea::placeholder {
-  color: rgb(185, 185, 185);
+  color: rgb(65, 65, 65);
 }
 textarea:focus {
   outline: none;
@@ -35,5 +36,3 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-

@@ -27,7 +27,7 @@ export default function GateDropdown({ gate, id }: Props) {
   return (
     <select
       value={gate} // should be set to initail value of gate during first render
-      className="nodrag"
+      className="nodrag gate-select"
       onChange={(e) => updateGate(e?.target?.value || GateEnum.OR)}
     >
       <option key={GateEnum.AND} value={GateEnum.AND}>

@@ -9,7 +9,7 @@ export default function TopGateNode({
 }: NodeProps<any>) {
   // const upateGate
   return (
-    <div className="container">
+    <div className="container" >
       <div className="text-container flex">
         <ParametersText description={description} id={id} />
       </div>

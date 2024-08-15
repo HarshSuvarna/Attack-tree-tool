@@ -52,7 +52,6 @@ const DesignView = ({
   showPossiblePath,
   parameter,
 }: Props) => {
-  let [hasTopGate, setHasTopGate] = useState<boolean>(false);
   const [nodes, setNodes] = useNodesState(initialNodes);
   const [edges, setEdges] = useEdgesState(initialEdges);
   const [possiblePath, setPossiblePath] = useState<any>();
@@ -111,7 +110,7 @@ const DesignView = ({
       ...connection,
       id: `${connection?.source}-${connection?.target}`,
       animated: false,
-      style: { stroke: "red" },
+      style: { stroke: "white" },
       type: "buttonEdge",
     };
     setEdges((prevEdge) => addEdge(edge, prevEdge || []));
@@ -152,13 +151,14 @@ const DesignView = ({
       // check if the dropped element is valid
       if (typeof type === "undefined" || !type) {
         return;
-      } else if (hasTopGate && type === Node_Type_Enum.TOP_GATE) {
-        console.log("An attack tree cannot have two top gates");
+      } else if (
+        type === Node_Type_Enum.TOP_GATE &&
+        (nodes || []).findIndex(
+          (n: any) => n.type === Node_Type_Enum.TOP_GATE
+        ) > -1
+      ) {
         return;
-      } else if (!hasTopGate && type == Node_Type_Enum.TOP_GATE) {
-        setHasTopGate(true);
       }
-
       const position = screenToFlowPosition({
         x: event.clientX,
         y: event.clientY,
@@ -224,7 +224,7 @@ const DesignView = ({
         <Controls />
 
         <Panel position="top-right">
-          <p style={{ fontSize: "10px" }}>
+          <p style={{ fontSize: "10px", color: "white" }}>
             Last updated at: {updatedAt?.toString() || ""}
           </p>
         </Panel>

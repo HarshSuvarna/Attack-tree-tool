@@ -1,15 +1,19 @@
 import { Handle, NodeProps, Position, useReactFlow } from "@xyflow/react";
 import { useDispatch } from "react-redux";
 import { showModal } from "../../slice/modalSlice";
+import "../../styles/event-node.css";
 import { deleteSelectedNode } from "../../slice/treeSlice";
 import ParametersInput from "./ParametersInput";
 import ParametersText from "./ParametersText";
+import { useState } from "react";
 
 export default function EventNode({
   data: { description, probability, skill, frequency, cost, isPossible },
   id,
 }: NodeProps<any>) {
   const { setNodes } = useReactFlow();
+  const [showOptionButtons, setShowOptionButtons] = useState(false);
+
   const dispatch = useDispatch();
   const hangelCheckBoxChange = () => {
     setNodes((nodes: any) =>
@@ -32,8 +36,12 @@ export default function EventNode({
     dispatch(deleteSelectedNode(id));
   };
   return (
-    <div className="container">
-      <div style={{ background: "red" }} className="text-container flex">
+    <div
+      className="container"
+      onMouseEnter={() => setShowOptionButtons(true)}
+      onMouseLeave={() => setShowOptionButtons(false)}
+    >
+      <div style={{ background: "#8eff17" }} className="text-container flex">
         <ParametersText description={description} id={id} />
       </div>
       {/* <div className="floating">adfaff</div> */}
@@ -58,14 +66,26 @@ export default function EventNode({
           C&nbsp;
           <ParametersInput type={"cost"} parameter={cost} id={id} />
         </p>
-        <button onClick={deleteNode}>X</button>
-        <button onClick={() => dispatch(showModal(id))}>Expand</button>
+        <button
+          style={{ visibility: showOptionButtons ? "visible" : "hidden" }}
+          className="delete-node-btn"
+          onClick={deleteNode}
+        >
+          X
+        </button>
+
+        <input
+          type="checkbox"
+          checked={isPossible}
+          onChange={hangelCheckBoxChange}
+        />
+        <button
+          className="expand-node-btn"
+          onClick={() => dispatch(showModal(id))}
+        >
+          Expand
+        </button>
       </div>
-      <input
-        type="checkbox"
-        checked={isPossible}
-        onChange={hangelCheckBoxChange}
-      />
       <Handle id="top" type="target" position={Position.Top} />
     </div>
   );

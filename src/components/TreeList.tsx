@@ -25,7 +25,7 @@ export default function TreeList({ userData }: Props) {
     <div>
       {trees.map((t: any, i) => (
         <div onClick={() => navigate(`/design/${t._id}`)} key={i}>
-          {t?.name || "New Attack Tree"}
+          {t?.name || "Untitled Tree"}
         </div>
       ))}
       <p>Templates</p>
