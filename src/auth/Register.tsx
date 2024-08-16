@@ -74,6 +74,7 @@ const RegistrationForm: React.FC = () => {
       try {
         dispatch(toggleLoading(true));
         const res: any = await registerUser(formData);
+        localStorage.setItem("token", res.token);
         const userData = res.userData;
         dispatch(setUser(userData));
         dispatch(toggleLoading(false));
