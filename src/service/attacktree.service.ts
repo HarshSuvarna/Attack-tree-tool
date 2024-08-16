@@ -1,55 +1,89 @@
-import axios from "axios";
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { Tree } from "src/schemas/tree.schema";
+import { CreateTreeDto, UpdateTreeDto } from "./tree.dto";
 
-export const createTree = (params: storeAttackTree) => {
-  return axios.post("/tree/create", params);
-};
+@Injectable()
+export class TreeService {
+  constructor(
+    @InjectModel("trees")
+    private readonly treeModel: Model<Tree>
+  ) {}
 
-export const createTreeFromTemplate = (params: storeAttackTree) => {
-  return axios.post("/tree/create-tree-from-template", params);
-};
+  create(createTreeDto: CreateTreeDto) {
+    const createdTree = new this.treeModel(createTreeDto);
+    return createdTree.save();
+  }
 
-export const updateTree = (id: string, params: updateTree) => {
-  return axios.patch(`/tree/update-tree/${id}`, params);
-};
+  // findAll(userId: string) {
+  //   return this.treeModel.find({
+  //     users: { $in: userId },
+  //   });
+  // }
 
-export const getAttackTree = (params: getAttackTree) => {
-  return axios.get(`/tree/get-tree-details/${params?.id}`);
-};
+  findAll(userId: string) {
+    return this.treeModel.aggregate([
+      {
+        $match: {
+          users: userId, // Match trees where the userId is in the users array
+        },
+      },
+      {
+        $addFields: {
+          convertedId: { $toObjectId: "$ownerId" },
+        },
+      },
+      {
+        $lookup: {
+          from: "users", // The users collection
+          localField: "convertedId", // The ownerId field in the trees collection
+          foreignField: "_id", // The _id field in the users collection
+          as: "ownerData", // The name of the field to store the result
+        },
+      },
+    ]);
+  }
 
-export const getAllTrees = (userId: string) => {
-  return axios.get(`/tree/get-all/${userId}`);
-};
+  findTempaltes() {
+    return this.treeModel.aggregate([
+      {
+        $match: {
+          type: "template", // Match trees where the userId is in the users array
+        },
+      },
+      {
+        $addFields: {
+          convertedId: { $toObjectId: "$ownerId" },
+        },
+      },
+      {
+        $lookup: {
+          from: "users", // The users collection
+          localField: "convertedId", // The ownerId field in the trees collection
+          foreignField: "_id", // The _id field in the users collection
+          as: "ownerData", // The name of the field to store the result
+        },
+      },
+    ]);
+  }
+  getName(_id: string) {
+    return this.treeModel.findOne({ _id }, { name: 1 });
+  }
 
-export const deleteNode = (nodeId: string) => {
-  return axios.delete(`/tree/delete-node/${nodeId}`);
-};
+  findOne(_id: any) {
+    return this.treeModel.findOne({ _id }).lean();
+  }
 
-export const getAnimatedEdges = (
-  treeId: any,
-  param: string,
-  isPossible: boolean
-) => {
-  return axios.get(
-    `/tree/show-path/${treeId}?field=${param}&isPossible=${isPossible}`
-  );
-};
-export interface getAttackTree {
-  id: string;
-}
+  update(id: Object, updateTreeDto: UpdateTreeDto) {
+    return this.treeModel.updateOne(
+      { _id: id },
+      { ...updateTreeDto }
+      // { upsert: true },
+    );
+  }
 
-export interface storeAttackTree {
-  users: Array<any>;
-  nodes?: Array<any>;
-  edges: Array<any>;
-  name: string;
-  nodeIds?: Array<string>;
-}
-
-export interface updateTree {
-  nodes: Array<any>;
-  edges?: Array<any>;
-  name?: string;
-  ownerId: string;
-  users: Array<string>;
-  _id: string;
+  remove(id: number) {
+    return `This action removes a #${id} tree`;
+  }
 }
