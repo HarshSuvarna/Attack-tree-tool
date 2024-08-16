@@ -185,7 +185,7 @@ export default ({
           use this template
         </button>
       )}
-      {isOwner && (
+      {isOwner && !isTemplate && (
         <button className="add-people" onClick={() => setshowModal(true)}>
           Add People
         </button>

@@ -1,0 +1,48 @@
+.navbar-container {
+  background-color: transparent;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  color: #e7e7e7;
+  box-sizing: border-box;
+  padding: 0px 34px;
+  font-weight: 500;
+  /* border-bottom: 1px solid #e7e7e7; */
+}
+.home {
+  width: 100%;
+}
+
+.links {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 32px;
+}
+
+.navbar-container p {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

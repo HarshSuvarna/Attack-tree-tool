@@ -1,17 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "reactflow/dist/style.css";
 import "./App.css";
 import Login from "./auth/Login";
+import { ProtectedRoute } from "./auth/ProtectedRoute";
+import RegistrationForm from "./auth/Register";
+import { RootState } from "./common/store";
+import Navbar from "./components/Navbar";
+import NodeInfoModal from "./components/NodeInfoModal";
 import Home from "./pages/Home";
 import NoPage from "./pages/NoPage";
 import TreeBuilder from "./pages/TreeBuilder";
-import { ProtectedRoute } from "./auth/ProtectedRoute";
-import RegistrationForm from "./auth/Register";
-import NodeInfoModal from "./components/NodeInfoModal";
-import { useSelector } from "react-redux";
-import { RootState } from "./common/store";
 
 function App() {
+  // const location = useLocation();
+  // const shouldShowNavbar = location.pathname !== "/login";
   const protectRoute = (Route: JSX.Element) => {
     return <ProtectedRoute>{Route}</ProtectedRoute>;
   };
@@ -20,6 +23,8 @@ function App() {
   return (
     <div className="main-app">
       <BrowserRouter>
+        {<Navbar />}
+
         <Routes>
           <Route path="/" element={protectRoute(<Home />)} />
           <Route path="/register" element={<RegistrationForm />} />

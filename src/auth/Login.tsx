@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ApiLoader from "../components/ApiLoader";
+import { RootState } from "../common/store";
 import { login } from "../service/auth.service";
 import { toggleLoading } from "../slice/loaderSlice";
 import { setUser } from "../slice/userSlice";
-import { RootState } from "../common/store";
 import "../styles/login.css";
 export interface loginInterface {
   email: string;
@@ -56,9 +55,9 @@ export default function Login() {
   }, []);
   return (
     <div className="login-container">
-      <ApiLoader />
+      {/* <ApiLoader /> */}
 
-      <p>login</p>
+      <p>Login</p>
       <input
         type="text"
         name="email"
@@ -72,8 +71,12 @@ export default function Login() {
         placeholder="password"
         onChange={handlePasswordChange}
       />
-      <button onClick={onSubmit}>Login</button>
-      <button onClick={() => navigate("/register")}>Register</button>
+      <button className="register-btn" onClick={onSubmit}>
+        Login
+      </button>
+      <button className="register-btn" onClick={() => navigate("/register")}>
+        Register
+      </button>
     </div>
   );
 }

@@ -1,0 +1,81 @@
+.home-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: hidden;
+}
+
+.tree-list-container {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+  flex-direction: column;
+}
+
+.my-tree-container {
+  width: 75%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* flex-direction: row; */
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 15px 0px;
+}
+
+.my-tree {
+  background-color: white;
+  height: 10rem;
+  min-width: 198px;
+  text-wrap: pretty;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 23px;
+  max-width: 198px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+
+.tree-list-container p {
+  width: 75%;
+  font-size: 28px;
+  font-weight: 500;
+  color: #e7e7e7;
+}
+
+.my-tree-container p {
+  color: #1e1e1e;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.name-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+
+.create-new-container {
+  width: 75%;
+  display: flex;
+  justify-content: end;
+}
+
+.create-new-btn {
+  background-color: #0047ff;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+}

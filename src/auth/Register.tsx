@@ -7,6 +7,7 @@ import { registerUser } from "../service/auth.service";
 import { toggleLoading } from "../slice/loaderSlice";
 import { setUser } from "../slice/userSlice";
 import "../styles/registration.css";
+
 interface FormData {
   firstName: string;
   lastName: string;
@@ -85,53 +86,59 @@ const RegistrationForm: React.FC = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="firstName">First Name</label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-        />
-        {errors.firstName && <span className="error">{errors.firstName}</span>}
-      </div>
-      <div>
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-        />
-        {errors.lastName && <span className="error">{errors.lastName}</span>}
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <span className="error">{errors.email}</span>}
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        {errors.password && <span className="error">{errors.password}</span>}
-      </div>
-      <button type="submit">Register</button>
-    </form>
+    <div className="register-container">
+      <form onSubmit={handleSubmit}>
+        <div className="key-value">
+          <label htmlFor="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          {errors.firstName && (
+            <span className="error">{errors.firstName}</span>
+          )}
+        </div>
+        <div className="key-value">
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          {errors.lastName && <span className="error">{errors.lastName}</span>}
+        </div>
+        <div className="key-value">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <span className="error">{errors.email}</span>}
+        </div>
+        <div className="key-value">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          {errors.password && <span className="error">{errors.password}</span>}
+        </div>
+        <button className="register-btn " type="submit">
+          Register
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -1,16 +1,16 @@
 .login-container {
-  background-color: red;
-  height: 100vh;
+  /* background-color: red; */
+  height: 90vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 45px;
 }
 
 .login-container input {
-  width: 30%;
-  font-size: 15px;
+  width: 20%;
+  font-size: 18px;
   height: 6%;
 }
