@@ -23,6 +23,7 @@ label {
   border-bottom: 1px solid gray;
   font-size: 18px;
   border-radius: 3px;
+  border: none;
 }
 .register-container {
   /* background-color: blue; */
@@ -81,4 +82,23 @@ form {
 
 .register-btn:hover {
   background-color: #000c8b;
+  opacity: 0.8;
+}
+
+.container-input {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  border-radius: 4px;
+}
+.register-btn:focus {
+  outline: none;
+}
+
+.error {
+  color: red;
+  font-size: 9px;
+  margin-top: 5px;
+  width: 39%;
+  /* background: blue; */
 }

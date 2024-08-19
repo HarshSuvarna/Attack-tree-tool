@@ -125,10 +125,15 @@
   top: -17px;
   right: -22px;
   color: white;
+  opacity: 0.4;
+}
+
+.close-btn:hover {
+  opacity: 1;
 }
 
 .close-btn:active {
-  border: none;
+  outline: none;
 }
 
 .close-btn:focus {

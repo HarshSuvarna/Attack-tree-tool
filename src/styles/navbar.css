@@ -16,6 +16,10 @@
   width: 100%;
 }
 
+.navbar-container p:hover {
+  opacity: 0.8;
+}
+
 .links {
   justify-content: center;
   align-items: center;

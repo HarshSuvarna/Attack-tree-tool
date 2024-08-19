@@ -7,6 +7,7 @@ import { registerUser } from "../service/auth.service";
 import { toggleLoading } from "../slice/loaderSlice";
 import { setUser } from "../slice/userSlice";
 import "../styles/registration.css";
+import { notifyError, notifySuccess } from "../components/customToast";
 
 interface FormData {
   firstName: string;
@@ -18,6 +19,8 @@ interface FormData {
 const RegistrationForm: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [visible, setVisible] = useState(false);
+
   const isAutheticated = useSelector(
     (state: RootState) => state.user.isAuthenticated
   );
@@ -27,6 +30,12 @@ const RegistrationForm: React.FC = () => {
     email: "",
     password: "",
   });
+
+  const togglePasswordVisibility = () => {
+    console.log("herer");
+
+    setVisible(!visible);
+  };
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
@@ -39,7 +48,7 @@ const RegistrationForm: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isAutheticated) navigate("/home");
+    if (isAutheticated) navigate("/dashboard");
   }, []);
 
   const validate = () => {
@@ -74,12 +83,16 @@ const RegistrationForm: React.FC = () => {
       try {
         dispatch(toggleLoading(true));
         const res: any = await registerUser(formData);
+        notifySuccess("Registration Successful!");
         localStorage.setItem("token", res.token);
         const userData = res.userData;
         dispatch(setUser(userData));
         dispatch(toggleLoading(false));
-        navigate("/home");
-      } catch (error) {
+        navigate("/dashboard");
+      } catch (error: any) {
+        notifyError(error?.message || "Something went wrong");
+        dispatch(toggleLoading(false));
+      } finally {
         dispatch(toggleLoading(false));
       }
 
@@ -126,13 +139,19 @@ const RegistrationForm: React.FC = () => {
         </div>
         <div className="key-value">
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <div className="container-input">
+            <input
+              type={visible ? "text" : "password"}
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <i
+              onClick={togglePasswordVisibility}
+              className={visible ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"}
+            ></i>
+          </div>
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
         <button className="register-btn " type="submit">

@@ -7,7 +7,19 @@
   padding: 40px 15px;
   background: #1e1e1e;
   border-radius: 20px;
-  width: 30%;
+  width: 21%;
+}
+
+.user-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.user-text {
+  font-size: 13px;
+  color: #e7e7e7;
 }
 
 .dndnode {
@@ -19,6 +31,8 @@
   border-radius: 20px;
   color: #1e1e1e;
   font-weight: 500;
+  cursor: grab;
+
   /* border: 1px solid black; */
 }
 
@@ -34,6 +48,7 @@
   color: #efefef;
   border: 1px solid #737373;
   font-weight: 500;
+  padding: 5px 10px;
 }
 
 .add-people {
@@ -43,6 +58,7 @@
   background: #1e1e1e;
   color: #e7e7e7;
   border: 1px solid #e7e7e7;
+  cursor: pointer;
 }
 
 .red {
@@ -94,10 +110,12 @@
   padding: 1px 18px;
   font-size: 16px;
   border: 1px solid #e7e7e7;
+  cursor: pointer;
 }
 
 .select-path:focus {
   border: 1px solid #e7e7e7;
+  outline: none;
 }
 
 .possible-path-btn {
@@ -108,7 +126,8 @@
   color: #e7e7e7;
   font-weight: 500;
   height: 45px;
-  font-size: 16px;
+  font-size: 13px;
+  cursor: pointer;
 }
 .select-path:disabled {
   opacity: 0.3;
@@ -130,6 +149,7 @@
   font-size: 17px;
   background: #5300ae;
   border: none;
+  cursor: pointer;
 }
 
 .calculate-btn:disabled {
@@ -228,17 +248,19 @@
   width: 93%;
   height: 33px;
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   font-weight: 600;
 }
-
+.add-collabortor-button:focus {
+  outline: none;
+}
 .add-collabortor-button:hover {
   background-color: #1a7734;
 }
 
 .search-user-input {
-  /* padding: 8px; */
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 90%;

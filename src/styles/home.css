@@ -17,20 +17,57 @@
   flex-direction: column;
 }
 
+.delete-icon {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  /* width: 0px; */
+  color: #1e1e1ecf;
+}
+
+.delete-icon:hover {
+  opacity: 0.8;
+}
+
 .my-tree-container {
   width: 75%;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
-  /* flex-direction: row; */
   gap: 10px;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 15px 0px;
+  padding: 15px 0;
+  height: 13rem;
+  background: #80808017;
+  padding: 10px;
+  border-radius: 17px;
+  cursor: pointer;
+}
+
+.no-tree-text {
+  font-size: 32px;
+  color: #e7e7e714;
+}
+
+.update-loader {
+  border: 3px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  height: 13px;
+  width: 13px;
+  /* position: fixed; */
+  top: 50%;
+}
+
+.update-text-loader {
+  /* background-color: red; */
 }
 
 .my-tree {
-  background-color: white;
+  background-color: #d5d5d5;
   height: 10rem;
   min-width: 198px;
   text-wrap: pretty;
@@ -43,6 +80,12 @@
   justify-content: space-between;
   align-items: start;
   flex-direction: column;
+  position: relative;
+}
+
+.my-tree:hover {
+  /* opacity: 0.8; */
+  background-color: white;
 }
 
 .tree-list-container p {
@@ -50,6 +93,7 @@
   font-size: 28px;
   font-weight: 500;
   color: #e7e7e7;
+  margin-top: 20px;
 }
 
 .my-tree-container p {
@@ -78,4 +122,14 @@
   color: white;
   border-radius: 8px;
   font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-new-btn:hover {
+  opacity: 0.8;
+  color: white;
 }

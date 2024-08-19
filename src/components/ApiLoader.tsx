@@ -8,7 +8,7 @@ function ApiLoader() {
   return (
     <div
       style={{ visibility: isLoading ? "visible" : "hidden" }}
-      className="api-loader-container"
+      className="loader-bg"
     >
       <Loader />
     </div>

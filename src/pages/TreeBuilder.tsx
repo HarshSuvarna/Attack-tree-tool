@@ -13,6 +13,7 @@ import {
 } from "../service/attacktree.service";
 import { setCurrentTree } from "../slice/treeSlice";
 import { createTemplateTree } from "../common/createTemplateTree";
+import { toggleLoading } from "../slice/loaderSlice";
 
 export default function TreeBuilder() {
   const { treeId }: any = useParams();
@@ -28,10 +29,15 @@ export default function TreeBuilder() {
   let originalTreeDetailsFromStore: any;
   const navigate = useNavigate();
   const [isOwner, setIsOwner] = useState(false);
-
+  const [updating, setUpdating] = useState(false);
   // let treeDetails: any;
+  // useEffect(() => {
+  //   console.log("in design :>> ", updating);
+  // }, [updating]);
   const getSelectedAttackTree = async () => {
     try {
+      dispatch(toggleLoading(true));
+
       const response: any = await getAttackTree({ id: treeId });
       response?.ownerId === userData._id && setIsOwner(true);
 
@@ -45,8 +51,11 @@ export default function TreeBuilder() {
       if (response.type === "template") {
         setIsTemplate(true);
       }
+      dispatch(toggleLoading(false));
+
       // tree && setTreeName(tree?.name || "");
     } catch (error) {
+      dispatch(toggleLoading(false));
       console.log("couldn't fetch the required tree");
     }
   };
@@ -90,6 +99,8 @@ export default function TreeBuilder() {
   }, [originalTreeDetails]);
 
   useEffect(() => {
+    dispatch(toggleLoading(true));
+
     getSelectedAttackTree();
     let observeInterval: number;
     // if (originalTreeDetails) {
@@ -104,6 +115,8 @@ export default function TreeBuilder() {
         // console.log("originalTreeDetails :>> ", originalTreeDetailsRef.current);
         // console.log("differences :>> ", differences);
         if (differences && differences.length) {
+          setUpdating(true);
+
           setOriginalTreeDetails(treeDetailsRef.current);
           dispatch(setCurrentTree(treeDetailsRef.current));
           let newTreeNode = cloneDeep(treeNodesRef.current);
@@ -127,9 +140,12 @@ export default function TreeBuilder() {
           });
           updateTreeDetails();
           setUpdatedAt(new Date());
+          setUpdating(false);
         }
       }
     }, 5000);
+    dispatch(toggleLoading(false));
+
     // }
     return () => {
       clearInterval(observeInterval);
@@ -145,6 +161,17 @@ export default function TreeBuilder() {
     <div className="design-view">
       {tree && (
         <>
+          <DesignView
+            initialNodes={tree?.nodes || []}
+            initialEdges={tree?.edges || []}
+            treeId={treeId}
+            updatedAt={updatedAt}
+            showPath={showPath}
+            showPossiblePath={showPossiblePath}
+            parameter={parameter}
+            updating={updating}
+            isTemplate={isTemplate}
+          />
           <Sidebar
             name={treeName}
             setTreeName={setTreeName}
@@ -158,15 +185,6 @@ export default function TreeBuilder() {
             createTreeFromTemplate={createTreeFromTemplate}
             isTemplate={isTemplate}
             isOwner={isOwner}
-          />
-          <DesignView
-            initialNodes={tree?.nodes || []}
-            initialEdges={tree?.edges || []}
-            treeId={treeId}
-            updatedAt={updatedAt}
-            showPath={showPath}
-            showPossiblePath={showPossiblePath}
-            parameter={parameter}
           />
         </>
       )}

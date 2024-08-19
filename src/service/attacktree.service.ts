@@ -20,6 +20,10 @@ export const getAllTrees = (userId: string) => {
   return axios.get(`/tree/get-all/${userId}`);
 };
 
+export const deleteTree = (treeId: string) => {
+  return axios.delete(`/tree/${treeId}`);
+};
+
 export const deleteNode = (nodeId: string) => {
   return axios.delete(`/tree/delete-node/${nodeId}`);
 };

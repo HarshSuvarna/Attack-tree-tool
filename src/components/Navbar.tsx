@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Logout from "../auth/Logout";
 import { RootState } from "../common/store";
 import "../styles/navbar.css";
-
+import { attackTreeLink } from "../common/helper";
 function Navbar() {
   const isAutheticated = useSelector(
     (state: RootState) => state.user.isAuthenticated
@@ -12,22 +12,24 @@ function Navbar() {
 
   const handleClick = () => {
     if (!isAutheticated) {
-      navigate("/home");
+      navigate("/dashboard");
     }
   };
   return (
     <div className="navbar-container">
       <div>ATTACK TREE TOOL</div>
       <div className="links">
-        <p>About</p>
-        <p>Contact Us</p>
-        <p>What is an Attack Tree?</p>
+        <p onClick={() => window.open(attackTreeLink, "_blank", "noreferrer")}>
+          What is an Attack Tree?
+        </p>
       </div>
       <div className="links">
+        <p onClick={() => navigate("/home")}>Home</p>
         {!isAutheticated && (
           <p onClick={() => navigate("/register")}>Register</p>
         )}
-        <p>Account</p>
+        <p onClick={() => navigate("/dashboard")}>Dashboard</p>
+        {isAutheticated && <p onClick={() => navigate("/account")}>Account</p>}
         <p onClick={handleClick}>{isAutheticated ? <Logout /> : "Login"}</p>
       </div>
       {/* <div></div> */}

@@ -10,13 +10,9 @@ export default function Home() {
 
   return (
     <>
-      {/* <div className="home"> */}
       <div className="home-container">
-        {/* <ApiLoader />
-      // <Logout /> */}
         <TreeList userData={userData} />
       </div>
-      {/* </div> */}
     </>
   );
 }

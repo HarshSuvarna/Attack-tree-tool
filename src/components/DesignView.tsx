@@ -41,6 +41,8 @@ export interface Props {
   showPath: boolean;
   showPossiblePath: boolean;
   parameter: string;
+  updating: boolean;
+  isTemplate: boolean;
 }
 
 const DesignView = ({
@@ -51,11 +53,13 @@ const DesignView = ({
   showPath,
   showPossiblePath,
   parameter,
+  updating,
+  isTemplate,
 }: Props) => {
   const [nodes, setNodes] = useNodesState(initialNodes);
   const [edges, setEdges] = useEdgesState(initialEdges);
-  const [possiblePath, setPossiblePath] = useState<any>();
-  const [allPath, setAllPath] = useState<any>(initialEdges);
+  // const [possiblePath, setPossiblePath] = useState<any>();
+  // const [allPath, setAllPath] = useState<any>(initialEdges);
   const [backupEdges, setbackupedges] = useState(initialEdges);
   const userData = useSelector((state: RootState) => state.user.userData || {});
 
@@ -69,16 +73,21 @@ const DesignView = ({
   //   account: "paid-pro",
   //   hideAttribution: true,
   // };
-
+  // useEffect(() => {
+  //   console.log("updating :>> ", updating);
+  // }, [updating]);
   const showAnimatedEdges = async () => {
     try {
+      // if (parameter === "" && showPossiblePath) {
+      //   parameter = "possible ";
+      // }
       const result: any = await getAnimatedEdges(
         treeId,
         parameter,
         showPossiblePath
       );
-      setPossiblePath(result.possibleAnimatedEdges);
-      setAllPath(result.animatedEdges);
+      // setPossiblePath(result.possibleAnimatedEdges);
+      // setAllPath(result.animatedEdges);
       setEdges(
         showPossiblePath ? result.possibleAnimatedEdges : result.animatedEdges
       );
@@ -97,13 +106,13 @@ const DesignView = ({
     }
   }, [showPath]);
 
-  useEffect(() => {
-    if (showPossiblePath) {
-      setEdges(possiblePath);
-    } else {
-      setEdges(allPath);
-    }
-  }, [showPossiblePath]);
+  // useEffect(() => {
+  //   if (showPossiblePath) {
+  //     setEdges(possiblePath);
+  //   } else {
+  //     setEdges(allPath);
+  //   }
+  // }, [showPossiblePath]);
 
   const onConnect = useCallback((connection: Connection) => {
     const edge = {
@@ -218,14 +227,31 @@ const DesignView = ({
         onDrop={onDrop}
         onDragOver={onDragOver}
         fitView
+        edgesFocusable={!isTemplate}
+        nodesDraggable={!isTemplate}
+        nodesConnectable={!isTemplate}
+        nodesFocusable={!isTemplate}
+        draggable={!isTemplate}
+        panOnDrag={!isTemplate}
+        elementsSelectable={!isTemplate}
         // proOptions={proOptions}
       >
         <Background color="gray" />
-        <Controls />
+        <Controls showInteractive={true} />
 
         <Panel position="top-right">
-          <p style={{ fontSize: "10px", color: "white" }}>
-            Last updated at: {updatedAt?.toString() || ""}
+          <p
+            className="update-text-loader"
+            style={{
+              fontSize: "10px",
+              color: "white",
+            }}
+          >
+            <span
+              style={{ visibility: updating ? "visible" : "hidden" }}
+              className="update-loader"
+            />
+            Last updated: {updatedAt?.toString() || ""}
           </p>
         </Panel>
       </ReactFlow>
@@ -241,6 +267,8 @@ export default ({
   showPath,
   showPossiblePath,
   parameter,
+  updating,
+  isTemplate,
 }: Props) => (
   <ReactFlowProvider>
     <DesignView
@@ -251,6 +279,8 @@ export default ({
       showPath={showPath}
       showPossiblePath={showPossiblePath}
       parameter={parameter}
+      updating={updating}
+      isTemplate={isTemplate}
     />
   </ReactFlowProvider>
 );

@@ -17,9 +17,9 @@
 .diagram-box {
   background-color: #6d6d6d87;
   height: 88vh;
-  width: 67%;
-  border: 1px solid #787878;
+  /* border: 1px solid #787878; */
   border-radius: 12px;
+  flex: 1;
 }
 
 .design-view {

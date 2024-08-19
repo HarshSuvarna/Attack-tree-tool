@@ -11,6 +11,9 @@ import NodeInfoModal from "./components/NodeInfoModal";
 import Home from "./pages/Home";
 import NoPage from "./pages/NoPage";
 import TreeBuilder from "./pages/TreeBuilder";
+import { ToastContainer } from "react-toastify";
+import LandingPage from "./pages/LandingPage";
+import Account from "./pages/Account";
 
 function App() {
   // const location = useLocation();
@@ -22,19 +25,21 @@ function App() {
 
   return (
     <div className="main-app">
+      <ToastContainer position="top-right" />
       <BrowserRouter>
         {<Navbar />}
-
         <Routes>
           <Route path="/" element={protectRoute(<Home />)} />
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/home" element={protectRoute(<Home />)} />
+          <Route path="/dashboard" element={protectRoute(<Home />)} />
           <Route
             path="/design/:treeId"
             element={protectRoute(<TreeBuilder />)}
           />
+          <Route path="/home" element={<LandingPage />} />
           <Route path="*" element={<NoPage />} />
+          <Route path="/account" element={protectRoute(<Account />)} />
         </Routes>
         {isOpen && <NodeInfoModal />}
       </BrowserRouter>
