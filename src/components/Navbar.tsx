@@ -17,7 +17,9 @@ function Navbar() {
   };
   return (
     <div className="navbar-container">
-      <div>ATTACK TREE TOOL</div>
+      <div onClick={() => navigate("/dashboard")} className="logo">
+        Cybersafe
+      </div>
       <div className="links">
         <p onClick={() => window.open(attackTreeLink, "_blank", "noreferrer")}>
           What is an Attack Tree?

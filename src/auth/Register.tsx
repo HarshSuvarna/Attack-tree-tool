@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../common/store";
+import { notifyError, notifyInfo } from "../components/customToast";
 import { registerUser } from "../service/auth.service";
 import { toggleLoading } from "../slice/loaderSlice";
-import { setUser } from "../slice/userSlice";
 import "../styles/registration.css";
-import { notifyError, notifySuccess } from "../components/customToast";
 
 interface FormData {
   firstName: string;
@@ -83,10 +82,11 @@ const RegistrationForm: React.FC = () => {
       try {
         dispatch(toggleLoading(true));
         const res: any = await registerUser(formData);
-        notifySuccess("Registration Successful!");
-        localStorage.setItem("token", res.token);
-        const userData = res.userData;
-        dispatch(setUser(userData));
+        notifyInfo(res?.message || "Email verification needed");
+        // notifySuccess("Registration Successful!");
+        // localStorage.setItem("token", res.token);
+        // const userData = res.userData;
+        // dispatch(setUser(userData));
         dispatch(toggleLoading(false));
         navigate("/dashboard");
       } catch (error: any) {

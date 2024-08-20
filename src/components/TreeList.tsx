@@ -138,7 +138,7 @@ export default function TreeList({ userData }: Props) {
           >
             <div className="name-button">
               {`Template:${t?.name}` || t?.name}
-              <p>Author:{t.ownerData[0].firstName}</p>
+              <p>Author:{t?.ownerData[0]?.firstName}</p>
             </div>
             <button
               className="add-people"

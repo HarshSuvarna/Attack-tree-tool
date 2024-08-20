@@ -16,6 +16,13 @@
   width: 100%;
 }
 
+.logo {
+  /* background-color: red; */
+  padding: 4px;
+  border: 1px solid rgb(142, 255, 23);
+  color: white;
+}
+
 .navbar-container p:hover {
   opacity: 0.8;
 }

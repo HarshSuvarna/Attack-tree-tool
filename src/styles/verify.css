@@ -1,0 +1,12 @@
+.verify-email-container {
+  /* background-color: red; */
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #e7e7e7;
+  font-size: 31px;
+  gap: 57px;
+}

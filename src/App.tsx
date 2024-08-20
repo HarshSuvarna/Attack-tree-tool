@@ -14,6 +14,7 @@ import TreeBuilder from "./pages/TreeBuilder";
 import { ToastContainer } from "react-toastify";
 import LandingPage from "./pages/LandingPage";
 import Account from "./pages/Account";
+import VerifyEmail from "./pages/VerifyEmail";
 
 function App() {
   // const location = useLocation();
@@ -40,6 +41,10 @@ function App() {
           <Route path="/home" element={<LandingPage />} />
           <Route path="*" element={<NoPage />} />
           <Route path="/account" element={protectRoute(<Account />)} />
+          <Route
+            path="/verify-email/:userId/:token"
+            element={<VerifyEmail />}
+          />
         </Routes>
         {isOpen && <NodeInfoModal />}
       </BrowserRouter>

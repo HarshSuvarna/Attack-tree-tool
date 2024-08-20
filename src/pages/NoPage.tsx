@@ -1,3 +1,10 @@
+import "../styles/login.css";
+
 export default function NoPage() {
-  return <div>Error: 404</div>;
+  return (
+    <div className="no-page">
+      Oops!<p>We can't seem to find the page you're looking for :(</p>
+      <span>Error 404</span>
+    </div>
+  );
 }

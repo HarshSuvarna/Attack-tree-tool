@@ -87,7 +87,11 @@ export default function Login() {
           />
           <i
             onClick={togglePasswordVisibility}
-            className={visible ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"}
+            className={
+              visible
+                ? "fa-solid fa-eye-slash margin-left tranparent"
+                : "fa-solid fa-eye tranparent"
+            }
           ></i>
         </div>
         <button className="register-btn" onClick={onSubmit}>
@@ -98,7 +102,7 @@ export default function Login() {
           className="register-btn"
           onClick={() => navigate("/register")}
         >
-          Register
+          New here? Register
         </button>
       </div>
     </div>
