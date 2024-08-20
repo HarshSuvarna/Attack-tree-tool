@@ -28,6 +28,7 @@ import {
 import { nodeTypes } from "../workflow.constants";
 import ButtonEdge from "./edges/buttonEdge";
 import { RootState } from "../common/store";
+import { toggleLoading } from "../slice/loaderSlice";
 
 // import useCursorStateSynced from "../collaboration/useCursorStateSynced";
 // import useEdgesStateSynced from "../collaboration/useEdgeStateSynced";
@@ -91,7 +92,10 @@ const DesignView = ({
       setEdges(
         showPossiblePath ? result.possibleAnimatedEdges : result.animatedEdges
       );
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      dispatch(toggleLoading(false));
+    }
   };
 
   // useEffect(() => {

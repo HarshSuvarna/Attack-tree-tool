@@ -37,6 +37,8 @@ export default function TreeList({ userData }: Props) {
       setTemplates(res?.templates || []);
     } catch (error) {
       dispatch(toggleLoading(false));
+    } finally {
+      dispatch(toggleLoading(false));
     }
   };
 
@@ -78,13 +80,18 @@ export default function TreeList({ userData }: Props) {
   };
 
   const createNewTreeUsingTempalte = async (template: any) => {
-    dispatch(toggleLoading(true));
+    try {
+      dispatch(toggleLoading(true));
 
-    const res: any = await createTemplateTree(template, userData._id);
-    notifySuccess("New Attack Tree Created using template");
+      const res: any = await createTemplateTree(template, userData._id);
+      notifySuccess("New Attack Tree Created using template");
 
-    navigate(`/design/${res?._id}`);
-    dispatch(toggleLoading(false));
+      navigate(`/design/${res?._id}`);
+      dispatch(toggleLoading(false));
+    } catch (error) {
+    } finally {
+      dispatch(toggleLoading(false));
+    }
   };
   return (
     <div className="tree-list-container">

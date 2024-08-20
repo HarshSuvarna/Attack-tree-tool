@@ -57,6 +57,8 @@ export default function TreeBuilder() {
     } catch (error) {
       dispatch(toggleLoading(false));
       console.log("couldn't fetch the required tree");
+    } finally {
+      dispatch(toggleLoading(false));
     }
   };
   let treeDetails = useSelector(

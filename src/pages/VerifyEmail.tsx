@@ -30,13 +30,15 @@ function VerifyEmail() {
             Login
           </button>
         </>
-      ) : (
+      ) : !verified ? (
         <>
           <p>We are sorry. Your email could not be verified</p>
           <button onClick={() => navigate("/login")} className="register-btn">
             Login
           </button>
         </>
+      ) : (
+        <p>Please wait</p>
       )}
     </div>
   );

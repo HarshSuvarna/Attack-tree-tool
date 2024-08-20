@@ -4,6 +4,7 @@ import { hideModal } from "../slice/modalSlice";
 import { addDocument } from "../slice/treeSlice";
 import { useEffect, useState } from "react";
 import { getDownloadUrl, getSignedUrl } from "../service/storage.service";
+import { toggleLoading } from "../slice/loaderSlice";
 
 function NodeInfoModal() {
   const [file, setFile] = useState();
@@ -47,7 +48,9 @@ function NodeInfoModal() {
       setHasFile(false);
     } catch (error) {
       setHasFile(false);
-      console.log("Something went wrong", error);
+      console.log("Something went wrong", error)
+    } finally {
+      dispatch(toggleLoading(false));
     }
   };
   const onRequestClose = () => dispatch(hideModal());
