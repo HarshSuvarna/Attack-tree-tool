@@ -34,6 +34,12 @@ label {
   justify-content: center;
 }
 
+.size {
+  font-size: 20px;
+  margin-right: 10px;
+  color: rgba(90, 90, 90, 0.744);
+}
+
 /* button:hover {
     background-color: #218838;
   } */
@@ -42,6 +48,10 @@ label {
   color: red;
   font-size: 0.875em;
   margin-top: 5px;
+}
+
+.left {
+  margin-left: 1px;
 }
 
 form {
@@ -72,7 +82,7 @@ form {
 }
 
 .register-btn {
-  background-color: #0010d2;
+  background-color: #0047ff;
   padding: 13px 83px;
   border: none;
   font-size: 21px;
@@ -90,6 +100,8 @@ form {
   width: 100%;
   display: flex;
   border-radius: 4px;
+  justify-content: center;
+  align-items: center;
 }
 .register-btn:focus {
   outline: none;

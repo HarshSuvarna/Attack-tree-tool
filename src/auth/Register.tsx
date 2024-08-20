@@ -149,7 +149,9 @@ const RegistrationForm: React.FC = () => {
             />
             <i
               onClick={togglePasswordVisibility}
-              className={visible ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"}
+              className={
+                visible ? "fa-solid fa-eye-slash size" : "fa-solid fa-eye size left"
+              }
             ></i>
           </div>
           {errors.password && <span className="error">{errors.password}</span>}
