@@ -9,6 +9,7 @@ import {
 import "../../styles/buttonedge.css";
 import { useDispatch } from "react-redux";
 import { deleteEdge } from "../../slice/treeSlice";
+import { useState } from "react";
 
 export default function ButtonEdge({
   id,
@@ -30,6 +31,7 @@ export default function ButtonEdge({
     targetY,
     targetPosition,
   });
+  const [showOptionButtons, setShowOptionButtons] = useState(false);
   const dispatch = useDispatch();
   const onEdgeClick = () => {
     setEdges((edges) => edges.filter((edge) => edge.id !== id));
@@ -41,6 +43,8 @@ export default function ButtonEdge({
       <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
       <EdgeLabelRenderer>
         <div
+          onMouseEnter={() => setShowOptionButtons(true)}
+          onMouseLeave={() => setShowOptionButtons(false)}
           style={{
             position: "absolute",
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
@@ -51,7 +55,11 @@ export default function ButtonEdge({
           }}
           className="nodrag nopan"
         >
-          <button className="edgebutton" onClick={onEdgeClick}>
+          <button
+            style={{ visibility: showOptionButtons ? "visible" : "hidden" }}
+            className="edgebutton"
+            onClick={onEdgeClick}
+          >
             ×
           </button>
         </div>

@@ -26,11 +26,10 @@ export default function ParametersText({ description, id }: Props) {
   };
   return (
     <textarea
-      // className="nodrag"
+      className="nodrag"
       placeholder="Description"
       onChange={(e) => updateDescription(e.target.value)}
       value={description || ""}
-      maxLength={38}
     />
   );
 }

@@ -69,7 +69,9 @@ function NodeInfoModal() {
         }}
       >
         <div className="description-container">
-          {node?.data?.description || "Add a description"}
+          <p className="description-text">
+            {node?.data?.description || "Add a description"}
+          </p>
         </div>
         <div className="other-data-container">
           <div>

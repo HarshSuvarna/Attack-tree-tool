@@ -5,7 +5,7 @@ textarea {
   color: #292929;
   min-height: 50px;
   max-height: 100px;
-  overflow: hidden;
+  overflow-y: auto;
   width: 100px;
   resize: none;
   font-weight: 600;
@@ -15,6 +15,11 @@ textarea::placeholder {
 }
 textarea:focus {
   outline: none;
+}
+
+.description-text {
+  word-wrap: break-word;
+  width: 100%;
 }
 
 input {
@@ -35,4 +40,26 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+::-webkit-scrollbar {
+  width: 3px;
+  /* height: 10px; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 1px;
+  background-color: transparent;
+  width: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #292929;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #292929;
 }

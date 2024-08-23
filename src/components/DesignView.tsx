@@ -231,13 +231,13 @@ const DesignView = ({
         onDrop={onDrop}
         onDragOver={onDragOver}
         fitView
-        edgesFocusable={!isTemplate}
-        nodesDraggable={!isTemplate}
-        nodesConnectable={!isTemplate}
-        nodesFocusable={!isTemplate}
-        draggable={!isTemplate}
-        panOnDrag={!isTemplate}
-        elementsSelectable={!isTemplate}
+        edgesFocusable={!isTemplate && !showPath}
+        nodesDraggable={!isTemplate && !showPath}
+        nodesConnectable={!isTemplate && !showPath}
+        nodesFocusable={!isTemplate && !showPath}
+        // draggable={!isTemplate}
+        panOnDrag={!isTemplate && !showPath}
+        elementsSelectable={!isTemplate && !showPath}
         // proOptions={proOptions}
       >
         <Background color="gray" />
