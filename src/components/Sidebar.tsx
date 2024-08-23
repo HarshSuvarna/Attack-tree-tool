@@ -196,7 +196,7 @@ export default ({
       </div>
 
       {isTemplate && (
-        <button className="add-people" onClick={() => createTreeFromTemplate}>
+        <button className="add-people" onClick={() => createTreeFromTemplate()}>
           use this template
         </button>
       )}
