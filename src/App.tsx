@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "reactflow/dist/style.css";
+import '@xyflow/react/dist/style.css';
+
 import "./App.css";
 import Login from "./auth/Login";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
