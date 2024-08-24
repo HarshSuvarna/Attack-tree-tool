@@ -10,6 +10,13 @@
   top: 50%;
 }
 
+.loader-text {
+  color: white;
+  position: fixed;
+  top: 55%;
+  opacity: 1;
+}
+
 .loader-bg {
   background-color: #1d1d1d;
   position: fixed;

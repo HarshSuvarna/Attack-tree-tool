@@ -11,6 +11,10 @@ function ApiLoader() {
       className="loader-bg"
     >
       <Loader />
+      <p className="loader-text">
+        It may take up to 50 seconds to load due to free-tier hosting
+        limitations. Thank you for your patience.
+      </p>
     </div>
   );
 }
