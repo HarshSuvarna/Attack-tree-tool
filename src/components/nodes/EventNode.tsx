@@ -73,12 +73,14 @@ export default function EventNode({
         >
           X
         </button>
-
-        <input
-          type="checkbox"
-          checked={isPossible}
-          onChange={hangelCheckBoxChange}
-        />
+        <div>
+          <p>Possible?</p>
+          <input
+            type="checkbox"
+            checked={isPossible}
+            onChange={hangelCheckBoxChange}
+          />
+        </div>
         <button
           className="expand-node-btn"
           onClick={() => dispatch(showModal(id))}
