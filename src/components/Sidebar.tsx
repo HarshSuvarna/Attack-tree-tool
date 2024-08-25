@@ -112,8 +112,9 @@ export default ({
         placeholder="Untitled tree"
         value={name}
         onChange={updateTreeName}
+        disabled ={isTemplate}
       />
-      <div className="node-container">
+      <div aria-disabled={true} className="node-container">
         <div className="description">
           You can drag these nodes to the pane on the left.
         </div>

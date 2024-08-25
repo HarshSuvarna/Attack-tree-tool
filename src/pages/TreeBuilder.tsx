@@ -14,6 +14,7 @@ import {
 import { setCurrentTree } from "../slice/treeSlice";
 import { createTemplateTree } from "../common/createTemplateTree";
 import { toggleLoading } from "../slice/loaderSlice";
+import { notifyError } from "../components/customToast";
 
 export default function TreeBuilder() {
   const { treeId }: any = useParams();
@@ -30,6 +31,7 @@ export default function TreeBuilder() {
   const navigate = useNavigate();
   const [isOwner, setIsOwner] = useState(false);
   const [updating, setUpdating] = useState(false);
+
   // let treeDetails: any;
   // useEffect(() => {
   //   console.log("in design :>> ", updating);
@@ -156,8 +158,18 @@ export default function TreeBuilder() {
   }, []);
 
   const createTreeFromTemplate = async () => {
-    const res: any = await createTemplateTree(tree, userData._id);
-    navigate(`/design/${res?._id}`);
+    try {
+      dispatch(toggleLoading(true));
+      const res: any = await createTemplateTree(tree, userData._id);
+      navigate(`/design/${res?._id}`);
+      window.location.reload();
+      dispatch(toggleLoading(false));
+    } catch (error) {
+      notifyError("Something went wrong");
+      dispatch(toggleLoading(false));
+    } finally {
+      dispatch(toggleLoading(false));
+    }
   };
   return (
     <div className="design-view">

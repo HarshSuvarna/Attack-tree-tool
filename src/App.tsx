@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import '@xyflow/react/dist/style.css';
+import "@xyflow/react/dist/style.css";
 
 import "./App.css";
 import Login from "./auth/Login";
@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import LandingPage from "./pages/LandingPage";
 import Account from "./pages/Account";
 import VerifyEmail from "./pages/VerifyEmail";
+// import { useEffect, useState } from "react";
 
 function App() {
   // const location = useLocation();
@@ -25,8 +26,30 @@ function App() {
   };
   const { isOpen } = useSelector((state: RootState) => state.modal);
 
+  // const [screenSize, setScreenSize] = useState<any>({
+  //   width: window.innerWidth,
+  //   height: window.innerHeight,
+  // });
+
+  // useEffect(() => {
+  //   // Function to update screen size
+  //   const handleResize = () => {
+  //     setScreenSize({
+  //       width: window.innerWidth,
+  //       height: window.innerHeight,
+  //     });
+  //   };
+
+  //   // Add event listener to track window resize
+  //   window.addEventListener("resize", handleResize);
+
+  //   // Clean up the event listener when the component unmounts
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+
   return (
     <div className="main-app">
+      {/* <p>{screenSize}</p> */}
       <ToastContainer position="top-right" />
       <BrowserRouter>
         {<Navbar />}

@@ -71,7 +71,7 @@ button:focus-visible {
   flex-direction: column;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -80,4 +80,14 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
+
+/* @media (max-width: 500px) {
+  .for-phones {
+    background-color: red;
+    visibility: hidden;
+  }
+  :root {
+    visibility: hidden;
+  }
+} */

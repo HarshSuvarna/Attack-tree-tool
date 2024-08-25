@@ -61,6 +61,11 @@
   cursor: pointer;
 }
 
+.add-people:hover {
+  background-color: #e7e7e7;
+  color: #1e1e1e;
+}
+
 .red {
   background-color: red;
 }
