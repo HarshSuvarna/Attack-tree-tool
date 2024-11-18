@@ -82,7 +82,7 @@ const RegistrationForm: React.FC = () => {
       try {
         dispatch(toggleLoading(true));
         const res: any = await registerUser(formData);
-        notifyInfo(res?.message || "Email verification needed");
+        notifyInfo("Please check your email for the verification url.");
         // notifySuccess("Registration Successful!");
         // localStorage.setItem("token", res.token);
         // const userData = res.userData;
