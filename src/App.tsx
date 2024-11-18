@@ -19,40 +19,16 @@ import VerifyEmail from "./pages/VerifyEmail";
 // import { useEffect, useState } from "react";
 
 function App() {
-  // const location = useLocation();
-  // const shouldShowNavbar = location.pathname !== "/login";
   const protectRoute = (Route: JSX.Element) => {
     return <ProtectedRoute>{Route}</ProtectedRoute>;
   };
   const { isOpen } = useSelector((state: RootState) => state.modal);
-
-  // const [screenSize, setScreenSize] = useState<any>({
-  //   width: window.innerWidth,
-  //   height: window.innerHeight,
-  // });
-
-  // useEffect(() => {
-  //   // Function to update screen size
-  //   const handleResize = () => {
-  //     setScreenSize({
-  //       width: window.innerWidth,
-  //       height: window.innerHeight,
-  //     });
-  //   };
-
-  //   // Add event listener to track window resize
-  //   window.addEventListener("resize", handleResize);
-
-  //   // Clean up the event listener when the component unmounts
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-
   return (
     <div className="main-app">
       {/* <p>{screenSize}</p> */}
       <ToastContainer position="top-right" />
       <BrowserRouter>
-        {<Navbar />}
+        <Navbar />
         <Routes>
           <Route path="/" element={protectRoute(<Home />)} />
           <Route path="/register" element={<RegistrationForm />} />
